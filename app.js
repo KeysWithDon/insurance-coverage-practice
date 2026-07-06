@@ -10,18 +10,6 @@ const studySets = {
       { key: "dp2", label: "DP-2" },
       { key: "dp3", label: "DP-3" }
     ],
-    references: [
-      {
-        src: "assets/reference-chart.jpg",
-        alt: "Original chart photo for dwelling policies coverage parts",
-        caption: "Coverage parts"
-      },
-      {
-        src: "assets/perils-removal-chart.jpg",
-        alt: "Reference photo showing perils covered against and removal rows",
-        caption: "Perils covered against and removal"
-      }
-    ],
     rows: [
       {
         id: "coverage-a",
@@ -129,13 +117,6 @@ const studySets = {
       { key: "ho6", label: "HO 6 Condo Owners" },
       { key: "ho8", label: "HO 8 Modified" }
     ],
-    references: [
-      {
-        src: "assets/homeowners-chart.jpg",
-        alt: "Reference photo showing homeowners coverage parts chart",
-        caption: "Homeowners coverage parts"
-      }
-    ],
     rows: [
       {
         id: "part-a",
@@ -237,7 +218,6 @@ const practiceMode = document.querySelector("#practiceMode");
 const chartTable = document.querySelector("#practiceTable");
 const chartCaption = document.querySelector("#chartCaption");
 const practiceHeader = document.querySelector("#practiceHeader");
-const referenceFigures = document.querySelector("#referenceFigures");
 const cardPrompt = document.querySelector("#cardPrompt");
 const cardInput = document.querySelector("#cardInput");
 const cardFeedback = document.querySelector("#cardFeedback");
@@ -306,7 +286,6 @@ function renderStudy() {
 
   renderPracticeOptions();
   renderHeader();
-  renderReferences();
   renderTable();
   deck = buildDeck();
   applyPracticeMode();
@@ -344,22 +323,6 @@ function renderHeader() {
     th.scope = "col";
     th.textContent = column.label;
     practiceHeader.append(th);
-  });
-}
-
-function renderReferences() {
-  referenceFigures.innerHTML = "";
-
-  activeStudy.references.forEach((reference) => {
-    const figure = document.createElement("figure");
-    const image = document.createElement("img");
-    const caption = document.createElement("figcaption");
-
-    image.src = reference.src;
-    image.alt = reference.alt;
-    caption.textContent = reference.caption;
-    figure.append(image, caption);
-    referenceFigures.append(figure);
   });
 }
 
