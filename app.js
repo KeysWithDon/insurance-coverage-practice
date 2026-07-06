@@ -225,6 +225,7 @@ const studySets = {
   }
 };
 
+const siteTitle = "Dwelling & Homeowners Coverage Practice";
 const activeStudyStorageKey = "coverage-chart-active-study-v1";
 const body = document.querySelector("#practiceBody");
 const brandMark = document.querySelector("#brandMark");
@@ -297,7 +298,8 @@ function switchStudy(nextStudyKey) {
 
 function renderStudy() {
   brandMark.textContent = activeStudy.shortLabel;
-  studyTitle.textContent = activeStudy.title;
+  document.title = siteTitle;
+  studyTitle.textContent = siteTitle;
   studySubtitle.textContent = activeStudy.subtitle;
   chartCaption.textContent = activeStudy.title;
   chartTable.dataset.study = activeStudyKey;
