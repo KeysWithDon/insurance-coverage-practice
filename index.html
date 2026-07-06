@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Insurance Coverage Parts Practice</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" id="brandMark" aria-hidden="true">DP</div>
+          <div>
+            <h1 id="studyTitle">Dwelling Policies Coverage Parts</h1>
+            <p id="studySubtitle">Exam prep fill-in chart</p>
+          </div>
+        </div>
+        <div class="scorebox" aria-live="polite">
+          <span id="scoreValue">0 / 27</span>
+          <span>correct</span>
+        </div>
+      </header>
+
+      <section class="toolbar" aria-label="Practice controls">
+        <div class="study-fields">
+          <div class="field">
+            <label for="studyMode">Study chart</label>
+            <select id="studyMode">
+              <option value="dp">DP Dwelling</option>
+              <option value="ho">HO Homeowners</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="practiceMode">Practice set</label>
+            <select id="practiceMode">
+              <option value="all">Full chart</option>
+            </select>
+          </div>
+        </div>
+        <div class="toolbar-actions">
+          <button type="button" id="checkAll">Check</button>
+          <button type="button" id="showMisses">Show misses</button>
+          <button type="button" id="revealAll">Reveal all</button>
+          <button type="button" id="hideAll">Hide all</button>
+          <button type="button" id="resetAll">Reset</button>
+          <button type="button" id="printBlank">Print blank</button>
+        </div>
+      </section>
+
+      <main class="workspace">
+        <section class="chart-tool" aria-label="Fill in practice chart">
+          <div class="chart-scroll">
+            <table class="practice-table" id="practiceTable">
+              <caption id="chartCaption">Dwelling Policies Coverage Parts</caption>
+              <thead>
+                <tr id="practiceHeader"></tr>
+              </thead>
+              <tbody id="practiceBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside class="side-panel" aria-label="Focused practice">
+          <details class="drill-panel" open>
+            <summary class="panel-head">
+              <h2>Flashcard</h2>
+              <span id="cardCount">1 of 27</span>
+            </summary>
+            <div class="drill-content">
+              <div class="prompt" id="cardPrompt"></div>
+              <textarea id="cardInput" spellcheck="false" autocomplete="off"></textarea>
+              <div class="card-actions">
+                <button type="button" id="cardCheck">Check</button>
+                <button type="button" id="cardReveal">Reveal</button>
+                <button type="button" id="cardNext">Next</button>
+              </div>
+              <div class="card-feedback" id="cardFeedback" aria-live="polite"></div>
+              <div class="answer-panel" id="cardAnswer" hidden></div>
+            </div>
+          </details>
+
+          <details class="reference-panel">
+            <summary>Reference photos</summary>
+            <div id="referenceFigures"></div>
+          </details>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
