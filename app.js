@@ -148,7 +148,7 @@ const studySets = {
         answers: {
           ho2: answer("50% of A", ["50", "a"]),
           ho3: answer("50% of A", ["50", "a"]),
-          ho4: answer("Insured selects coverage limit ($5K min)", ["insured selects", "coverage limit", ["5k", "5 k", "5000"], "min"]),
+          ho4: answer("Insured selects coverage limit ($6K min)", ["insured selects", "coverage limit", ["6k", "6 k", "6000"], "min"]),
           ho5: answer("50% of A", ["50", "a"]),
           ho6: answer("Insured selects coverage limit ($10K min)", ["insured selects", "coverage limit", ["10k", "10 k", "10000"], "min"]),
           ho8: answer("50% of A", ["50", "a"])
@@ -243,10 +243,20 @@ document.querySelector("#printBlank").addEventListener("click", () => window.pri
 studyMode.addEventListener("change", () => switchStudy(studyMode.value));
 practiceMode.addEventListener("change", () => {
   if (practiceMode.value === "row") {
-    randomRowIndex = Math.floor(Math.random() * activeStudy.rows.length);
+    randomRowIndex = getNextRandomRowIndex();
   }
   applyPracticeMode();
   updateScore();
+});
+practiceMode.addEventListener("click", () => {
+  if (practiceMode.value === "row") {
+    refreshRandomRow();
+  }
+});
+practiceMode.addEventListener("keydown", (event) => {
+  if (practiceMode.value === "row" && (event.key === "Enter" || event.key === " ")) {
+    refreshRandomRow();
+  }
 });
 
 document.querySelector("#cardCheck").addEventListener("click", checkCard);
@@ -271,7 +281,7 @@ function switchStudy(nextStudyKey) {
   activeStudy = studySets[activeStudyKey];
   progress = loadProgress();
   cardIndex = 0;
-  randomRowIndex = Math.floor(Math.random() * activeStudy.rows.length);
+  randomRowIndex = getNextRandomRowIndex();
   saveActiveStudyKey();
   renderStudy();
 }
@@ -529,6 +539,24 @@ function applyPracticeMode() {
     getAnswerBox(cell).hidden = true;
     clearCellState(cell);
   });
+}
+
+function refreshRandomRow() {
+  randomRowIndex = getNextRandomRowIndex();
+  applyPracticeMode();
+  updateScore();
+}
+
+function getNextRandomRowIndex() {
+  if (activeStudy.rows.length <= 1) {
+    return 0;
+  }
+
+  let nextIndex = randomRowIndex;
+  while (nextIndex === randomRowIndex) {
+    nextIndex = Math.floor(Math.random() * activeStudy.rows.length);
+  }
+  return nextIndex;
 }
 
 function resetAll() {
